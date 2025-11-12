@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "android": {
+      "package": "com.happyndlovu.inspectionapp"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "5af5e9be-d656-4f5d-873c-1a4a5926d3e1"
+      }
+    }
+  }
+}

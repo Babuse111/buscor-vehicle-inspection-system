@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Buscor Brand Colors */
+:root {
+  --buscor-orange: #FF7F00;
+  --buscor-teal: #00A693;
+}
+
+/* Custom styles */
+.btn-primary {
+  @apply bg-buscor-orange hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-md transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-buscor-teal hover:bg-teal-600 text-white font-medium py-2 px-4 rounded-md transition-colors;
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6;
+}
+
+.buscor-header {
+  background: linear-gradient(135deg, var(--buscor-orange) 0%, var(--buscor-teal) 100%);
+}

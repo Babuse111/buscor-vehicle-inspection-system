@@ -1,0 +1,87 @@
+-- Seed data for initial setup
+
+-- Insert default form schema
+INSERT INTO form_schemas (id, name, version, description, json_schema, is_active) VALUES 
+(
+    uuid_generate_v4(),
+    'Pre-Trip Inspection',
+    '1.0',
+    'Standard pre-trip vehicle inspection checklist',
+    '{"schemaVersion":"1.0","title":"Pre-Trip Vehicle Inspection","description":"Comprehensive vehicle safety inspection checklist","sections":[{"id":"exterior","title":"Exterior Inspection","description":"Visual inspection of vehicle exterior","items":[{"key":"tyres_front_left","label":"Tyres - Front Left","type":"tristate","required":true,"priority":"HIGH","description":"Check tread depth, wear patterns, sidewall damage"},{"key":"tyres_front_right","label":"Tyres - Front Right","type":"tristate","required":true,"priority":"HIGH","description":"Check tread depth, wear patterns, sidewall damage"},{"key":"tyres_rear_left","label":"Tyres - Rear Left","type":"tristate","required":true,"priority":"HIGH","description":"Check tread depth, wear patterns, sidewall damage"},{"key":"tyres_rear_right","label":"Tyres - Rear Right","type":"tristate","required":true,"priority":"HIGH","description":"Check tread depth, wear patterns, sidewall damage"},{"key":"wheel_nuts","label":"Wheel Nuts/Bolts","type":"tristate","required":true,"priority":"CRITICAL","description":"Check all wheel nuts are tight and secure"},{"key":"bodywork","label":"Bodywork Condition","type":"tristate","required":true,"priority":"MEDIUM","description":"Check for dents, scratches, rust, damage"},{"key":"mirrors_exterior","label":"Exterior Mirrors","type":"tristate","required":true,"priority":"HIGH","description":"Check mirrors are clean, secure, properly adjusted"},{"key":"windows_exterior","label":"Windows & Windscreen","type":"tristate","required":true,"priority":"HIGH","description":"Check for cracks, chips, cleanliness"}]},{"id":"lights","title":"Lighting Systems","description":"Inspection of all vehicle lighting","items":[{"key":"headlights","label":"Headlights","type":"tristate","required":true,"priority":"CRITICAL","description":"Check both headlights function, alignment, lens condition"},{"key":"taillights","label":"Tail Lights","type":"tristate","required":true,"priority":"CRITICAL","description":"Check both tail lights function"},{"key":"brake_lights","label":"Brake Lights","type":"tristate","required":true,"priority":"CRITICAL","description":"Test brake light operation"},{"key":"indicators","label":"Turn Indicators","type":"tristate","required":true,"priority":"CRITICAL","description":"Test all four indicators and hazard lights"},{"key":"reverse_lights","label":"Reverse Lights","type":"tristate","required":true,"priority":"HIGH","description":"Test reverse light operation"},{"key":"number_plate_lights","label":"Number Plate Lights","type":"tristate","required":true,"priority":"MEDIUM","description":"Check illumination of rear number plate"}]},{"id":"fluids","title":"Fluid Levels","description":"Check all fluid levels and condition","items":[{"key":"engine_oil","label":"Engine Oil Level","type":"tristate","required":true,"priority":"CRITICAL","description":"Check oil level between min/max marks"},{"key":"coolant","label":"Coolant Level","type":"tristate","required":true,"priority":"HIGH","description":"Check coolant reservoir level"},{"key":"brake_fluid","label":"Brake Fluid","type":"tristate","required":true,"priority":"CRITICAL","description":"Check brake fluid level and color"},{"key":"windscreen_washer","label":"Windscreen Washer Fluid","type":"tristate","required":true,"priority":"MEDIUM","description":"Check washer fluid level"},{"key":"power_steering","label":"Power Steering Fluid","type":"tristate","required":true,"priority":"HIGH","description":"Check power steering fluid level"}]},{"id":"interior","title":"Interior & Controls","description":"Check interior condition and controls","items":[{"key":"seat_condition","label":"Driver Seat Condition","type":"tristate","required":true,"priority":"MEDIUM","description":"Check seat adjustment, wear, cleanliness"},{"key":"seatbelt_driver","label":"Driver Seatbelt","type":"tristate","required":true,"priority":"CRITICAL","description":"Test seatbelt function and condition"},{"key":"steering_wheel","label":"Steering Wheel","type":"tristate","required":true,"priority":"CRITICAL","description":"Check for excessive play, condition"},{"key":"handbrake","label":"Handbrake/Parking Brake","type":"tristate","required":true,"priority":"CRITICAL","description":"Test handbrake operation and holding"},{"key":"mirrors_interior","label":"Interior Mirror","type":"tristate","required":true,"priority":"HIGH","description":"Check mirror position and condition"},{"key":"wipers","label":"Windscreen Wipers","type":"tristate","required":true,"priority":"HIGH","description":"Test wiper operation and blade condition"},{"key":"horn","label":"Horn","type":"tristate","required":true,"priority":"MEDIUM","description":"Test horn operation"}]},{"id":"engine","title":"Engine Bay","description":"Engine compartment inspection","items":[{"key":"battery","label":"Battery Condition","type":"tristate","required":true,"priority":"HIGH","description":"Check terminals, corrosion, charge level"},{"key":"belts","label":"Drive Belts","type":"tristate","required":true,"priority":"HIGH","description":"Check belt condition and tension"},{"key":"hoses","label":"Hoses & Connections","type":"tristate","required":true,"priority":"HIGH","description":"Check for leaks, cracks, loose connections"},{"key":"air_filter","label":"Air Filter","type":"tristate","required":true,"priority":"MEDIUM","description":"Check air filter condition"},{"key":"engine_leaks","label":"Engine Leaks","type":"tristate","required":true,"priority":"HIGH","description":"Check for oil, coolant, or fuel leaks"}]},{"id":"safety","title":"Safety Equipment","description":"Required safety equipment check","items":[{"key":"first_aid_kit","label":"First Aid Kit","type":"tristate","required":true,"priority":"HIGH","description":"Verify presence and check expiry dates"},{"key":"fire_extinguisher","label":"Fire Extinguisher","type":"tristate","required":true,"priority":"HIGH","description":"Check pressure gauge and expiry date"},{"key":"warning_triangle","label":"Warning Triangle","type":"tristate","required":true,"priority":"MEDIUM","description":"Verify presence and condition"},{"key":"spare_wheel","label":"Spare Wheel","type":"tristate","required":true,"priority":"HIGH","description":"Check pressure and condition"},{"key":"jack_tools","label":"Jack & Tools","type":"tristate","required":true,"priority":"HIGH","description":"Verify jack and wheel changing tools present"}]},{"id":"documentation","title":"Documentation","description":"Required vehicle documentation","items":[{"key":"registration_papers","label":"Registration Papers","type":"tristate","required":true,"priority":"CRITICAL","description":"Check valid registration documents"},{"key":"insurance_certificate","label":"Insurance Certificate","type":"tristate","required":true,"priority":"CRITICAL","description":"Verify current insurance coverage"},{"key":"driving_license","label":"Valid Driving License","type":"tristate","required":true,"priority":"CRITICAL","description":"Driver has valid license for vehicle category"},{"key":"roadworthy_certificate","label":"Roadworthy Certificate","type":"tristate","required":true,"priority":"CRITICAL","description":"Check valid roadworthy certificate"}]}],"metadata":{"created":"2025-11-09","version":"1.0","author":"Inspection App System","lastUpdated":"2025-11-09","requiredFields":["odometer","location","signature"],"passFailCriteria":{"autoFail":["CRITICAL items marked NOT_OK"],"needsAttention":["HIGH priority items marked NOT_OK"],"pass":["All CRITICAL items OK, majority of items OK"]}}}',
+    true
+);
+
+-- Insert sample admin user (password: admin123)
+INSERT INTO users (id, role, name, phone, email, password_hash, is_active) VALUES 
+(
+    uuid_generate_v4(),
+    'admin',
+    'System Administrator',
+    '+1234567890',
+    'admin@inspectionapp.com',
+    '$2b$10$rZ.XktxZ9wLvKFWqP2jgoeWQFqKgJO5qQGwG.qc5kp0Gm0Z8z8z8z',
+    true
+);
+
+-- Insert sample driver (password: driver123)
+INSERT INTO users (id, role, name, phone, email, password_hash, is_active) VALUES 
+(
+    uuid_generate_v4(),
+    'driver',
+    'John Smith',
+    '+1234567891',
+    'john.smith@company.com',
+    '$2b$10$rZ.XktxZ9wLvKFWqP2jgoeWQFqKgJO5qQGwG.qc5kp0Gm0Z8z8z8z',
+    true
+);
+
+-- Insert sample mechanic (password: mechanic123)
+INSERT INTO users (id, role, name, phone, email, password_hash, is_active) VALUES 
+(
+    uuid_generate_v4(),
+    'mechanic',
+    'Mike Johnson',
+    '+1234567892',
+    'mike.johnson@company.com',
+    '$2b$10$rZ.XktxZ9wLvKFWqP2jgoeWQFqKgJO5qQGwG.qc5kp0Gm0Z8z8z8z',
+    true
+);
+
+-- Insert sample vehicles
+INSERT INTO vehicles (id, fleet_code, registration, make, model, year, fuel_type, capacity, department, status) VALUES 
+(
+    uuid_generate_v4(),
+    'BUS-001',
+    'ABC123GP',
+    'Mercedes-Benz',
+    'Sprinter',
+    2020,
+    'diesel',
+    22,
+    'Transport',
+    'active'
+),
+(
+    uuid_generate_v4(),
+    'VAN-002',
+    'DEF456GP',
+    'Ford',
+    'Transit',
+    2019,
+    'diesel',
+    12,
+    'Maintenance',
+    'active'
+),
+(
+    uuid_generate_v4(),
+    'CAR-003',
+    'GHI789GP',
+    'Toyota',
+    'Corolla',
+    2021,
+    'petrol',
+    5,
+    'Administration',
+    'active'
+);
